@@ -29,13 +29,13 @@ namespace NormalDensityTable21
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine1 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -43,6 +43,7 @@ namespace NormalDensityTable21
             // 
             // chart1
             // 
+            chartArea1.AxisY.StripLines.Add(stripLine1);
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(12, 12);
@@ -55,12 +56,15 @@ namespace NormalDensityTable21
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series2.MarkerSize = 10;
             series2.Name = "Series2";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Name = "Series3";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(530, 426);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.OnPlotClick);
             this.chart1.Paint += new System.Windows.Forms.PaintEventHandler(this.plot);
             // 
             // dataGridView
@@ -71,21 +75,17 @@ namespace NormalDensityTable21
             this.dataGridView.Size = new System.Drawing.Size(240, 320);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellValueChanged);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.tick);
+            this.dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.RowStateChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(648, 53);
+            this.button1.Location = new System.Drawing.Point(565, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.on);
+            this.button1.Click += new System.EventHandler(this.Button_click);
             // 
             // Form1
             // 
@@ -97,6 +97,7 @@ namespace NormalDensityTable21
             this.Controls.Add(this.chart1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -106,7 +107,6 @@ namespace NormalDensityTable21
         #endregion
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
     }
 }
