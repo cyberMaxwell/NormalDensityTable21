@@ -43,6 +43,10 @@ namespace NormalDensityTable21
             // 
             // chart1
             // 
+            chartArea1.AxisX.LabelAutoFitMaxFontSize = 7;
+            chartArea1.AxisX.LabelAutoFitMinFontSize = 7;
+            chartArea1.AxisY.LabelAutoFitMaxFontSize = 7;
+            chartArea1.AxisY.LabelAutoFitMinFontSize = 7;
             chartArea1.AxisY.StripLines.Add(stripLine1);
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
@@ -62,7 +66,7 @@ namespace NormalDensityTable21
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(530, 426);
+            this.chart1.Size = new System.Drawing.Size(530, 415);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.Paint += new System.Windows.Forms.PaintEventHandler(this.plot);
@@ -72,7 +76,8 @@ namespace NormalDensityTable21
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(548, 118);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(240, 320);
+            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
+            this.dataGridView.Size = new System.Drawing.Size(260, 309);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellValueChanged);
             this.dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.RowStateChanged);
@@ -91,7 +96,7 @@ namespace NormalDensityTable21
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(820, 439);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.chart1);

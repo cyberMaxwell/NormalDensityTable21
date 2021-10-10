@@ -1,4 +1,5 @@
-﻿using System;
+﻿//крашится, при слишком больших значениях
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,11 +31,34 @@ namespace NormalDensityTable21
 
         private void FormLoad(object sender, EventArgs e)
         {
-            //chart1.ChartAreas[0].
+           
+           
+
+
+            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            chart1.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+            chart1.ChartAreas[0].AxisX.Crossing = 0;
+            chart1.ChartAreas[0].AxisX.MajorTickMark.TickMarkStyle = TickMarkStyle.AcrossAxis;
+            chart1.ChartAreas[0].AxisY.MajorTickMark.TickMarkStyle = TickMarkStyle.AcrossAxis;
+          
+
+
+            chart1.ChartAreas[0].AxisX.Interval = 1;
+            chart1.ChartAreas[0].AxisY.Interval = 2;
+
+
+            chart1.ChartAreas[0].AxisX.Minimum = -2;
+            chart1.ChartAreas[0].AxisX.Maximum = 4;
+            chart1.ChartAreas[0].AxisY.Minimum = -10;
+            chart1.ChartAreas[0].AxisY.Maximum = 10;
+
             chart1.Series[1].MarkerSize = 7;
 
             chart1.Series[2].Color = Color.Gray;
             chart1.Series[2].BorderWidth = 1;
+            chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
 
         }
@@ -63,14 +87,13 @@ namespace NormalDensityTable21
 
                 x = Convert.ToDouble(dataGridView.Rows[e.RowIndex].Cells[0].Value);
 
-
-
-
                 chart1.Series[1].MarkerStyle = MarkerStyle.Circle;
                 chart1.Series[1].Color = Color.Red;
                 chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
+
                 chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
                 chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
+                chart1.Series[2].Points.Add(new DataPoint(x, -10));
 
             }
 
@@ -79,17 +102,12 @@ namespace NormalDensityTable21
 
         private void plot(object sender, PaintEventArgs e)
         {
+            
             chart1.Series[0].Points.Clear();
+          
 
             double a = -3, b = 4, h = 0.1, x, y;
-            chart1.ChartAreas[0].AxisX.Interval = 1;
-            chart1.ChartAreas[0].AxisY.Interval = 2;
-            
-
-            chart1.ChartAreas[0].AxisX.Minimum = -2;
-            chart1.ChartAreas[0].AxisX.Maximum = 4;
-            chart1.ChartAreas[0].AxisY.Minimum = -10;
-            chart1.ChartAreas[0].AxisY.Maximum = 10;
+        
 
             x = a;
             while (x <= b)
@@ -108,6 +126,7 @@ namespace NormalDensityTable21
         private void RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
+           
 
         }
     }
