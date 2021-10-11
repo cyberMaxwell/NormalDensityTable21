@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,9 +32,10 @@ namespace NormalDensityTable21
         private void FormLoad(object sender, EventArgs e)
         {
 
-            
+
             chart1.Series[1].Points.Clear();
 
+            
             dataGridView.Columns[1].ReadOnly = true;
 
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
@@ -61,11 +63,19 @@ namespace NormalDensityTable21
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
 
+            BuildPlot();
+
+
+
+
 
         }
+       
 
         private void onCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            BuildPlot();
+
             double x;
             bool isDouble = false;
 
@@ -98,26 +108,106 @@ namespace NormalDensityTable21
         private void plot(object sender, PaintEventArgs e)
         {
 
-            chart1.Series[0].Points.Clear();
-
-
-            double a = -3, b = 4, h = 0.1, x;
-
-
-            x = a;
-            while (x <= b)
-            {
-                chart1.Series[0].Points.AddXY(x, f(x));
-                x += h;
-            }
-            menuStrip1.Update();
         }
+       
 
         private void RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
         }
 
+       
+
+        private void CreateMenu(object sender, EventArgs e)//нажатие на "создать"
+        {
+            dataGridView.Rows.Clear();
+        }
+
+        private void SaveDataMenu(object sender, EventArgs e)//сохранить данные DataGridView
+        {
+            SaveFileDialog save = new SaveFileDialog();
+
+            List<double> row = new List<double>();
+
+
+
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+
+                for (int j = 0; j < 2; j++)
+                {
+                    row.Add(Convert.ToDouble(dataGridView.Rows[i].Cells[j].Value));
+                }
+            }
+
+
+            string saveStr = "";
+
+            int newLine = 0;
+
+
+            foreach (var a in row)
+            {
+                if (newLine == 1)
+                {
+                    saveStr += a.ToString() + "\n";
+                    newLine = 0;
+                }
+                else
+                {
+                    saveStr += a.ToString() + ";";
+                    newLine++;
+                }
+            }
+
+            if (saveStr.Length > 5)
+            {
+                saveStr = saveStr.Substring(0, saveStr.Length - 5);
+                saveStr.Trim();
+            }
+            else
+            {
+                saveStr = "";
+            }
+
+            for (int i = 0; i < saveStr.Length; i++)
+            {
+                if (saveStr.Contains("0;0"))
+                {
+                    int indexZero = saveStr.IndexOf("0;0");
+                    saveStr = saveStr.Remove(indexZero, 3);
+                }
+            }
+
+
+            // precisionLabel.Text = saveStr;
+           
+
+            //save.OverwritePrompt = false;
+            save.RestoreDirectory = true;
+            save.DefaultExt = "txt";
+            save.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            save.FilterIndex = 1;
+
+            if (save.ShowDialog(this) == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName, saveStr);
+                
+            }
+
+
+        }
+     
+        private void OnOpenDataClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void вычислятьНемедленноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            вычислятьНемедленноToolStripMenuItem.Checked = !вычислятьНемедленноToolStripMenuItem.Checked;
+
+        }
         private void всплывающиеПодсказкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             всплывающиеПодсказкиToolStripMenuItem.Checked = !всплывающиеПодсказкиToolStripMenuItem.Checked;
@@ -129,71 +219,18 @@ namespace NormalDensityTable21
             about.ShowDialog();
         }
 
-        private void CreateMenu(object sender, EventArgs e)//нажатие на "создать"
+        private void BuildPlot()
         {
-            dataGridView.Rows.Clear();
-        }
+            chart1.Series[0].Points.Clear();
 
-        private void SaveDataMenu(object sender, EventArgs e)//сохранить данные DataGridView
-        {
-            SaveFileDialog save = new SaveFileDialog();
+            double a = -3, b = 4, h = 0.1, x;
 
-            double[,] masToSave = new double[dataGridView.Rows.Count, 2];
-
-            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            x = a;
+            while (x <= b)
             {
-                
-                for (int j = 0; j < 2; j++)
-                {
-                    if (dataGridView.Rows[i].Cells[0].Value == null && dataGridView.Rows[i].Cells[1].Value == null)
-                        continue;
-                    else
-                        masToSave[i, j] = Convert.ToDouble(dataGridView.Rows[i].Cells[j].Value);
-
-                }
+                chart1.Series[0].Points.AddXY(x, f(x));
+                x += h;
             }
-
-            string saveStr = "";
-
-            int newLine = 0;
-
-            foreach (double a in masToSave)
-            {
-                if (newLine == 1)
-                {
-                    saveStr += a + "\n";
-                    newLine = 0;
-                }
-                else
-                {
-                    saveStr += a + ";";
-                    newLine++;
-                }
-
-            }
-            if (saveStr.Length > 5)
-            {
-                
-                saveStr = saveStr.Substring(0, saveStr.Length - 5);
-                saveStr.Trim();
-
-            }
-            else
-            {
-                saveStr = "";
-            }
-            precisionLabel.Text = saveStr;
-
-           // save.Filter = "Text File | *.txt";
-           // save.FilterIndex = 2;
-           //
-           // if (save.ShowDialog() == DialogResult.OK)
-           // {
-           //     File.WriteAllText(save.FileName, saveStr);
-           //    
-           // }
-            
-            
         }
     }
 }
