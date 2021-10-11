@@ -29,77 +29,424 @@ namespace NormalDensityTable21
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine1 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine11 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
+            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.вычислятьНемедленноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ytToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ytToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всплывающиеПодсказкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.precisionLabel = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.открытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.вычислитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вычислитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // chart1
+            // menuStrip1
             // 
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 7;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 7;
-            chartArea1.AxisY.LabelAutoFitMaxFontSize = 7;
-            chartArea1.AxisY.LabelAutoFitMinFontSize = 7;
-            chartArea1.AxisY.StripLines.Add(stripLine1);
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.MarkerSize = 10;
-            series2.Name = "Series2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "Series3";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(530, 415);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
-            this.chart1.Paint += new System.Windows.Forms.PaintEventHandler(this.plot);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.uToolStripMenuItem,
+            this.справкаToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(820, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.создатьToolStripMenuItem,
+            this.открытьToolStripMenuItem,
+            this.сохранитьToolStripMenuItem,
+            this.сохранитьКакToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.выходToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
+            this.toolStripMenuItem1.Text = "Файл";
+            // 
+            // сохранитьКакToolStripMenuItem
+            // 
+            this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
+            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.сохранитьКакToolStripMenuItem.Text = "Сохранить как...";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вычислитьToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.вычислятьНемедленноToolStripMenuItem});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 20);
+            this.toolStripMenuItem2.Text = "Вычислить";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(202, 6);
+            // 
+            // вычислятьНемедленноToolStripMenuItem
+            // 
+            this.вычислятьНемедленноToolStripMenuItem.Name = "вычислятьНемедленноToolStripMenuItem";
+            this.вычислятьНемедленноToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.вычислятьНемедленноToolStripMenuItem.Text = "Вычислять немедленно";
+            // 
+            // uToolStripMenuItem
+            // 
+            this.uToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ytToolStripMenuItem,
+            this.ytToolStripMenuItem1});
+            this.uToolStripMenuItem.Name = "uToolStripMenuItem";
+            this.uToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.uToolStripMenuItem.Text = "График";
+            // 
+            // ytToolStripMenuItem
+            // 
+            this.ytToolStripMenuItem.Name = "ytToolStripMenuItem";
+            this.ytToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.ytToolStripMenuItem.Text = "Копировать";
+            // 
+            // ytToolStripMenuItem1
+            // 
+            this.ytToolStripMenuItem1.Name = "ytToolStripMenuItem1";
+            this.ytToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.ytToolStripMenuItem1.Text = "Сохранить";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.всплывающиеПодсказкиToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem});
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // всплывающиеПодсказкиToolStripMenuItem
+            // 
+            this.всплывающиеПодсказкиToolStripMenuItem.Checked = true;
+            this.всплывающиеПодсказкиToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.всплывающиеПодсказкиToolStripMenuItem.Name = "всплывающиеПодсказкиToolStripMenuItem";
+            this.всплывающиеПодсказкиToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.всплывающиеПодсказкиToolStripMenuItem.Text = "Всплывающие подсказки";
+            this.всплывающиеПодсказкиToolStripMenuItem.Click += new System.EventHandler(this.всплывающиеПодсказкиToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(548, 118);
+            this.dataGridView.Location = new System.Drawing.Point(548, 78);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
-            this.dataGridView.Size = new System.Drawing.Size(260, 309);
+            this.dataGridView.Size = new System.Drawing.Size(260, 349);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellValueChanged);
             this.dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.RowStateChanged);
+            // 
+            // chart1
+            // 
+            chartArea11.AxisX.LabelAutoFitMaxFontSize = 7;
+            chartArea11.AxisX.LabelAutoFitMinFontSize = 7;
+            chartArea11.AxisY.LabelAutoFitMaxFontSize = 7;
+            chartArea11.AxisY.LabelAutoFitMinFontSize = 7;
+            chartArea11.AxisY.StripLines.Add(stripLine11);
+            chartArea11.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea11);
+            this.chart1.Location = new System.Drawing.Point(12, 55);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series31.ChartArea = "ChartArea1";
+            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series31.Name = "Series1";
+            series32.ChartArea = "ChartArea1";
+            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series32.MarkerSize = 10;
+            series32.Name = "Series2";
+            series33.ChartArea = "ChartArea1";
+            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series33.Name = "Series3";
+            this.chart1.Series.Add(series31);
+            this.chart1.Series.Add(series32);
+            this.chart1.Series.Add(series33);
+            this.chart1.Size = new System.Drawing.Size(530, 372);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            this.chart1.Paint += new System.Windows.Forms.PaintEventHandler(this.plot);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripSeparator1,
+            this.toolStripButton4});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(820, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(634, 52);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // precisionLabel
+            // 
+            this.precisionLabel.AutoSize = true;
+            this.precisionLabel.Location = new System.Drawing.Point(571, 55);
+            this.precisionLabel.Name = "precisionLabel";
+            this.precisionLabel.Size = new System.Drawing.Size(57, 13);
+            this.precisionLabel.TabIndex = 6;
+            this.precisionLabel.Text = "Точность:";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem1,
+            this.сохранитьToolStripMenuItem1,
+            this.toolStripSeparator4,
+            this.вычислитьToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(136, 76);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(132, 6);
+            // 
+            // открытьToolStripMenuItem1
+            // 
+            this.открытьToolStripMenuItem1.Image = global::NormalDensityTable21.Properties.Resources.Open;
+            this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
+            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.открытьToolStripMenuItem1.Text = "Открыть";
+            // 
+            // сохранитьToolStripMenuItem1
+            // 
+            this.сохранитьToolStripMenuItem1.Image = global::NormalDensityTable21.Properties.Resources.Save;
+            this.сохранитьToolStripMenuItem1.Name = "сохранитьToolStripMenuItem1";
+            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.сохранитьToolStripMenuItem1.Text = "Сохранить";
+            // 
+            // вычислитьToolStripMenuItem1
+            // 
+            this.вычислитьToolStripMenuItem1.Image = global::NormalDensityTable21.Properties.Resources.Func;
+            this.вычислитьToolStripMenuItem1.Name = "вычислитьToolStripMenuItem1";
+            this.вычислитьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.вычислитьToolStripMenuItem1.Text = "Вычислить";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "toolStripButton4";
+            // 
+            // создатьToolStripMenuItem
+            // 
+            this.создатьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.New;
+            this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.создатьToolStripMenuItem.Text = "Создать";
+            this.создатьToolStripMenuItem.Click += new System.EventHandler(this.CreateMenu);
+            // 
+            // открытьToolStripMenuItem
+            // 
+            this.открытьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.Open;
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.Save;
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.SaveDataMenu);
+            // 
+            // вычислитьToolStripMenuItem
+            // 
+            this.вычислитьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.Func;
+            this.вычислитьToolStripMenuItem.Name = "вычислитьToolStripMenuItem";
+            this.вычислитьToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.вычислитьToolStripMenuItem.Text = "Вычислить";
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 439);
+            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.precisionLabel);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.chart1);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Плотность стандартного нормального распределения";
             this.Load += new System.EventHandler(this.FormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem uToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ytToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ytToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьКакToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вычислитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вычислятьНемедленноToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всплывающиеПодсказкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label precisionLabel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem вычислитьToolStripMenuItem1;
     }
 }
 
