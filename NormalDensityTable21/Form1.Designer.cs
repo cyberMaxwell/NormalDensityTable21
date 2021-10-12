@@ -107,7 +107,7 @@ namespace NormalDensityTable21
             // 
             this.создатьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.New;
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.создатьToolStripMenuItem.Text = "Создать";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.CreateMenu);
             // 
@@ -115,7 +115,7 @@ namespace NormalDensityTable21
             // 
             this.OpenDataMenu.Image = global::NormalDensityTable21.Properties.Resources.Open;
             this.OpenDataMenu.Name = "OpenDataMenu";
-            this.OpenDataMenu.Size = new System.Drawing.Size(180, 22);
+            this.OpenDataMenu.Size = new System.Drawing.Size(163, 22);
             this.OpenDataMenu.Text = "Открыть";
             this.OpenDataMenu.Click += new System.EventHandler(this.OnOpenDataClick);
             // 
@@ -123,25 +123,25 @@ namespace NormalDensityTable21
             // 
             this.сохранитьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.Save;
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.SaveDataMenu);
             // 
             // сохранитьКакToolStripMenuItem
             // 
             this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.сохранитьКакToolStripMenuItem.Text = "Сохранить как...";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // toolStripMenuItem2
@@ -230,6 +230,7 @@ namespace NormalDensityTable21
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView.Size = new System.Drawing.Size(260, 349);
             this.dataGridView.TabIndex = 2;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnCellEndEdit);
             this.dataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.OnRowsRemoved);
             this.dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.RowStateChanged);

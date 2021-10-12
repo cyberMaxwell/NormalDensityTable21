@@ -63,6 +63,8 @@ namespace NormalDensityTable21
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
 
+            
+
             BuildPlot();
         }
 
@@ -136,11 +138,6 @@ namespace NormalDensityTable21
                 }
             }
 
-
-            // precisionLabel.Text = saveStr;
-
-
-            //save.OverwritePrompt = false;
             save.RestoreDirectory = true;
             save.DefaultExt = "txt";
             save.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
@@ -150,8 +147,6 @@ namespace NormalDensityTable21
             {
                 File.WriteAllText(save.FileName, saveStr);
             }
-
-
         }
 
         private void OnOpenDataClick(object sender, EventArgs e)
@@ -192,7 +187,8 @@ namespace NormalDensityTable21
         {
             CalculateImmediately.Checked = !CalculateImmediately.Checked;
 
-            if (CalculateImmediately.Checked) {
+            if (CalculateImmediately.Checked)
+            {
                 for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
                     Plot(i);
@@ -230,9 +226,9 @@ namespace NormalDensityTable21
         private void OnCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             //BuildPlot();
-            if(CalculateImmediately.Checked)
+            if (CalculateImmediately.Checked)
                 Plot(e.RowIndex);
-            
+
         }
 
 
@@ -254,7 +250,7 @@ namespace NormalDensityTable21
             }
         }
 
-      
+
 
         private void Plot(int rowIndex)//построение точек и перпендикуляров на графике и вычисление значений функции в DataGridView
         {
@@ -303,21 +299,56 @@ namespace NormalDensityTable21
             }
         }
 
-        private void PaintDotsAgain(int rowIndex)//рисует/перерисовывает точки на графике
+        private void PaintDotsAgain(int rowIndex)//рисует точки на графике
         {
             double x = Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value);
+
+            bool isEmpty = false;
+            bool isFirstZero = false;
+
+
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                if(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value) == 0 && Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[1].Value) == 0)
+                {
+                    isEmpty = true;
+                }
+            }
+
+           
+
+
 
             if (x == 0)
             {
                 chart1.Series[1].Points.Add(new DataPoint(200, 200));
-                chart1.Series[2].Points.Add(new DataPoint(200, 200));
+                
             }
 
-            chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
+            if (isEmpty)
+            {
+                return;
+            }
+            else
+            {
 
-            chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
-            chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
-            chart1.Series[2].Points.Add(new DataPoint(x, 0));
+                chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
+
+               // chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
+                chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
+                chart1.Series[2].Points.Add(new DataPoint(x, 0));
+                if (isFirstZero)
+                {
+                    chart1.Series[2].Points.RemoveAt(0);
+                }
+                
+            }
+
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
