@@ -63,7 +63,7 @@ namespace NormalDensityTable21
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
 
-            
+           
 
             BuildPlot();
         }
@@ -301,6 +301,11 @@ namespace NormalDensityTable21
 
         private void PaintDotsAgain(int rowIndex)//рисует точки на графике
         {
+            {//костыль, но бага то нет
+                chart1.Series[2].Points.Add(new DataPoint(0, 200));
+                chart1.Series[2].Points.Add(new DataPoint(200, 0));
+            }
+
             double x = Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value);
 
             bool isEmpty = false;
@@ -314,10 +319,6 @@ namespace NormalDensityTable21
                     isEmpty = true;
                 }
             }
-
-           
-
-
 
             if (x == 0)
             {
@@ -334,13 +335,9 @@ namespace NormalDensityTable21
 
                 chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
 
-               // chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
                 chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
                 chart1.Series[2].Points.Add(new DataPoint(x, 0));
-                if (isFirstZero)
-                {
-                    chart1.Series[2].Points.RemoveAt(0);
-                }
+                
                 
             }
 
