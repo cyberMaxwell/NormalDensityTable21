@@ -47,7 +47,7 @@ namespace NormalDensityTable21
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.вычислитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.вычислятьНемедленноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CalculateImmediately = new System.Windows.Forms.ToolStripMenuItem();
             this.uToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ytToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ytToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +61,7 @@ namespace NormalDensityTable21
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.CalculateFuncButton = new System.Windows.Forms.ToolStripButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.precisionLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -107,7 +107,7 @@ namespace NormalDensityTable21
             // 
             this.создатьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.New;
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.создатьToolStripMenuItem.Text = "Создать";
             this.создатьToolStripMenuItem.Click += new System.EventHandler(this.CreateMenu);
             // 
@@ -115,7 +115,7 @@ namespace NormalDensityTable21
             // 
             this.OpenDataMenu.Image = global::NormalDensityTable21.Properties.Resources.Open;
             this.OpenDataMenu.Name = "OpenDataMenu";
-            this.OpenDataMenu.Size = new System.Drawing.Size(163, 22);
+            this.OpenDataMenu.Size = new System.Drawing.Size(180, 22);
             this.OpenDataMenu.Text = "Открыть";
             this.OpenDataMenu.Click += new System.EventHandler(this.OnOpenDataClick);
             // 
@@ -123,25 +123,25 @@ namespace NormalDensityTable21
             // 
             this.сохранитьToolStripMenuItem.Image = global::NormalDensityTable21.Properties.Resources.Save;
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.SaveDataMenu);
             // 
             // сохранитьКакToolStripMenuItem
             // 
             this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьКакToolStripMenuItem.Text = "Сохранить как...";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // toolStripMenuItem2
@@ -149,7 +149,7 @@ namespace NormalDensityTable21
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вычислитьToolStripMenuItem,
             this.toolStripSeparator3,
-            this.вычислятьНемедленноToolStripMenuItem});
+            this.CalculateImmediately});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 20);
             this.toolStripMenuItem2.Text = "Вычислить";
@@ -166,14 +166,14 @@ namespace NormalDensityTable21
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(202, 6);
             // 
-            // вычислятьНемедленноToolStripMenuItem
+            // CalculateImmediately
             // 
-            this.вычислятьНемедленноToolStripMenuItem.Checked = true;
-            this.вычислятьНемедленноToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.вычислятьНемедленноToolStripMenuItem.Name = "вычислятьНемедленноToolStripMenuItem";
-            this.вычислятьНемедленноToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.вычислятьНемедленноToolStripMenuItem.Text = "Вычислять немедленно";
-            this.вычислятьНемедленноToolStripMenuItem.Click += new System.EventHandler(this.вычислятьНемедленноToolStripMenuItem_Click);
+            this.CalculateImmediately.Checked = true;
+            this.CalculateImmediately.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CalculateImmediately.Name = "CalculateImmediately";
+            this.CalculateImmediately.Size = new System.Drawing.Size(205, 22);
+            this.CalculateImmediately.Text = "Вычислять немедленно";
+            this.CalculateImmediately.Click += new System.EventHandler(this.вычислятьНемедленноToolStripMenuItem_Click);
             // 
             // uToolStripMenuItem
             // 
@@ -251,6 +251,7 @@ namespace NormalDensityTable21
             series1.Name = "Series1";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.EmptyPointStyle.IsVisibleInLegend = false;
             series2.MarkerSize = 10;
             series2.Name = "Series2";
             series3.ChartArea = "ChartArea1";
@@ -270,7 +271,7 @@ namespace NormalDensityTable21
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSeparator1,
-            this.toolStripButton4});
+            this.CalculateFuncButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(820, 25);
@@ -309,14 +310,14 @@ namespace NormalDensityTable21
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton4
+            // CalculateFuncButton
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.CalculateFuncButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CalculateFuncButton.Image = ((System.Drawing.Image)(resources.GetObject("CalculateFuncButton.Image")));
+            this.CalculateFuncButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CalculateFuncButton.Name = "CalculateFuncButton";
+            this.CalculateFuncButton.Size = new System.Drawing.Size(23, 22);
+            this.CalculateFuncButton.Click += new System.EventHandler(this.CalculateFuncButton_Click);
             // 
             // numericUpDown1
             // 
@@ -431,7 +432,7 @@ namespace NormalDensityTable21
         private System.Windows.Forms.ToolStripMenuItem сохранитьКакToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вычислитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вычислятьНемедленноToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CalculateImmediately;
         private System.Windows.Forms.ToolStripMenuItem всплывающиеПодсказкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -443,7 +444,7 @@ namespace NormalDensityTable21
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton CalculateFuncButton;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label precisionLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

@@ -42,6 +42,7 @@ namespace NormalDensityTable21
             chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
             chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
             chart1.ChartAreas[0].AxisX.Crossing = 0;
+            chart1.ChartAreas[0].AxisY.Crossing = 0;
             chart1.ChartAreas[0].AxisX.MajorTickMark.TickMarkStyle = TickMarkStyle.AcrossAxis;
             chart1.ChartAreas[0].AxisY.MajorTickMark.TickMarkStyle = TickMarkStyle.AcrossAxis;
 
@@ -63,10 +64,6 @@ namespace NormalDensityTable21
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
 
             BuildPlot();
-
-
-
-
         }
 
 
@@ -193,7 +190,16 @@ namespace NormalDensityTable21
 
         private void вычислятьНемедленноToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            вычислятьНемедленноToolStripMenuItem.Checked = !вычислятьНемедленноToolStripMenuItem.Checked;
+            CalculateImmediately.Checked = !CalculateImmediately.Checked;
+
+            if (CalculateImmediately.Checked) {
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    Plot(i);
+                }
+
+            }
+
         }
         private void всплывающиеПодсказкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -224,97 +230,94 @@ namespace NormalDensityTable21
         private void OnCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             //BuildPlot();
-
-            double x;
-            bool isDouble = false;
-
-            if (dataGridView.Rows[e.RowIndex].Cells[0].Value != null)
-                isDouble = double.TryParse(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), out _);
-            else
-            {
-                dataGridView.Rows[e.RowIndex].Cells[0].Value = null;
-                dataGridView.Rows[e.RowIndex].Cells[1].Value = null;
-
-                RepaintDots();
-
-
-            }
-
-            if (!isDouble)
-                dataGridView.Rows[e.RowIndex].Cells[0].Value = null;
-            else
-            {
-                if (Convert.ToDouble(dataGridView.Rows[e.RowIndex].Cells[0].Value) > 391)
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[0].Value = null;
-                    return;
-                }
-
-
-                dataGridView.Rows[e.RowIndex].Cells[1].Value = f(Convert.ToDouble(dataGridView.Rows[e.RowIndex].Cells[0].Value));
-
-                x = Convert.ToDouble(dataGridView.Rows[e.RowIndex].Cells[0].Value);
-
-                if(x == 0)
-                {
-                    chart1.Series[1].Points.Add(new DataPoint(200, 200));
-                    chart1.Series[2].Points.Add(new DataPoint(200, 200));/////////////////////////////////////////////////////
-                }
-
-                chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
-
-                chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
-                chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
-                chart1.Series[2].Points.Add(new DataPoint(x, -10));
-            }
+            if(CalculateImmediately.Checked)
+                Plot(e.RowIndex);
+            
         }
 
-     
+
 
         private void OnRowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             RepaintDots();
-
         }
 
         private void RepaintDots()
         {
-            double x;
-
-
 
             chart1.Series[1].Points.Clear();
             chart1.Series[2].Points.Clear();
 
-
-
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
-                x = Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value);
-                if (x == 0)
+                PaintDotsAgain(i);
+            }
+        }
+
+      
+
+        private void Plot(int rowIndex)//построение точек и перпендикуляров на графике и вычисление значений функции в DataGridView
+        {
+            Calculatefunc(rowIndex);
+
+            PaintDotsAgain(rowIndex);
+
+        }
+
+        private void Calculatefunc(int rowIndex)//вычисление значений функции в DataGridView
+        {
+            bool isDouble = false;
+            if (dataGridView.Rows[rowIndex].Cells[0].Value != null)
+                isDouble = double.TryParse(dataGridView.Rows[rowIndex].Cells[0].Value.ToString(), out _);
+            else
+            {
+                dataGridView.Rows[rowIndex].Cells[0].Value = null;
+                dataGridView.Rows[rowIndex].Cells[1].Value = null;
+
+                RepaintDots();
+            }
+
+            if (!isDouble)
+                dataGridView.Rows[rowIndex].Cells[0].Value = null;
+            else
+            {
+                if (Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value) > 391)
                 {
-                    chart1.Series[1].Points.Add(new DataPoint(200, 200));
-                    chart1.Series[2].Points.Add(new DataPoint(200, 200));
+                    dataGridView.Rows[rowIndex].Cells[0].Value = null;
+                    return;
                 }
 
-                chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
 
-                chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
-                chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
-                chart1.Series[2].Points.Add(new DataPoint(x, -10));
-                
-
+                dataGridView.Rows[rowIndex].Cells[1].Value = f(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value));
 
             }
         }
 
-        private void ClearAndAdd200()
+        private void CalculateFuncButton_Click(object sender, EventArgs e)//f(x) на панели инструментов
         {
-            chart1.Series[1].Points.Clear();
-            chart1.Series[2].Points.Clear();
-            chart1.Series[1].Points.AddXY(200, 200);
-            chart1.Series[2].Points.AddXY(200, 200);
+            //BuildPlot();
 
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                Plot(i);
+            }
+        }
+
+        private void PaintDotsAgain(int rowIndex)//рисует/перерисовывает точки на графике
+        {
+            double x = Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value);
+
+            if (x == 0)
+            {
+                chart1.Series[1].Points.Add(new DataPoint(200, 200));
+                chart1.Series[2].Points.Add(new DataPoint(200, 200));
+            }
+
+            chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
+
+            chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
+            chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
+            chart1.Series[2].Points.Add(new DataPoint(x, 0));
         }
     }
 }
