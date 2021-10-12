@@ -65,16 +65,7 @@ namespace NormalDensityTable21
             BuildPlot();
 
 
-        }
 
-
-        private void onCellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void plot(object sender, PaintEventArgs e)
-        {
 
         }
 
@@ -230,13 +221,6 @@ namespace NormalDensityTable21
             }
         }
 
-        private void OnCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-
-        }
-
         private void OnCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             //BuildPlot();
@@ -251,24 +235,8 @@ namespace NormalDensityTable21
                 dataGridView.Rows[e.RowIndex].Cells[0].Value = null;
                 dataGridView.Rows[e.RowIndex].Cells[1].Value = null;
 
-                chart1.Series[1].Points.Clear();
-                chart1.Series[2].Points.Clear();
+                RepaintDots();
 
-
-
-                for (int i = 0; i < dataGridView.Rows.Count; i++)
-                {
-
-                    x = Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value);
-                    //if (x == 0) x = 0.00001;
-
-                    chart1.Series[1].Points.AddXY(x, f(x));
-
-                    chart1.Series[2].Points.AddXY(x, f(x));
-                    chart1.Series[2].Points.AddXY(0, f(x));
-                    chart1.Series[2].Points.AddXY(x, -10);
-
-                }
 
             }
 
@@ -286,7 +254,12 @@ namespace NormalDensityTable21
                 dataGridView.Rows[e.RowIndex].Cells[1].Value = f(Convert.ToDouble(dataGridView.Rows[e.RowIndex].Cells[0].Value));
 
                 x = Convert.ToDouble(dataGridView.Rows[e.RowIndex].Cells[0].Value);
-                //if (x == 0) x = 0.00001;
+
+                if(x == 0)
+                {
+                    chart1.Series[1].Points.Add(new DataPoint(200, 200));
+                    chart1.Series[2].Points.Add(new DataPoint(200, 200));/////////////////////////////////////////////////////
+                }
 
                 chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
 
@@ -296,20 +269,19 @@ namespace NormalDensityTable21
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+     
+
+        private void OnRowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            chart1.Series[1].Points.Clear();
-            chart1.Series[2].Points.Clear();
+            RepaintDots();
 
         }
 
-        private void OnRowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        private void RepaintDots()
         {
             double x;
 
 
-            dataGridView.Rows[e.RowIndex].Cells[0].Value = null;
-            dataGridView.Rows[e.RowIndex].Cells[1].Value = null;
 
             chart1.Series[1].Points.Clear();
             chart1.Series[2].Points.Clear();
@@ -318,17 +290,30 @@ namespace NormalDensityTable21
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
-
                 x = Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value);
-                if (x == 0) x = 0.00001;
+                if (x == 0)
+                {
+                    chart1.Series[1].Points.Add(new DataPoint(200, 200));
+                    chart1.Series[2].Points.Add(new DataPoint(200, 200));
+                }
 
-                chart1.Series[1].Points.AddXY(x, f(x));
+                chart1.Series[1].Points.Add(new DataPoint(x, f(x)));
 
-                chart1.Series[2].Points.AddXY(x, f(x));
-                chart1.Series[2].Points.AddXY(0, f(x));
-                chart1.Series[2].Points.AddXY(x, -10);
+                chart1.Series[2].Points.Add(new DataPoint(x, f(x)));
+                chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
+                chart1.Series[2].Points.Add(new DataPoint(x, -10));
+                
+
 
             }
+        }
+
+        private void ClearAndAdd200()
+        {
+            chart1.Series[1].Points.Clear();
+            chart1.Series[2].Points.Clear();
+            chart1.Series[1].Points.AddXY(200, 200);
+            chart1.Series[2].Points.AddXY(200, 200);
 
         }
     }

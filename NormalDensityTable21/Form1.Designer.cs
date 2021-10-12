@@ -69,7 +69,6 @@ namespace NormalDensityTable21
             this.сохранитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.вычислитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -231,9 +230,7 @@ namespace NormalDensityTable21
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.dataGridView.Size = new System.Drawing.Size(260, 349);
             this.dataGridView.TabIndex = 2;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnCellClick);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnCellEndEdit);
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellValueChanged);
             this.dataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.OnRowsRemoved);
             this.dataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.RowStateChanged);
             // 
@@ -265,7 +262,6 @@ namespace NormalDensityTable21
             this.chart1.Size = new System.Drawing.Size(530, 372);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
-            this.chart1.Paint += new System.Windows.Forms.PaintEventHandler(this.plot);
             // 
             // toolStrip1
             // 
@@ -389,23 +385,12 @@ namespace NormalDensityTable21
             this.вычислитьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.вычислитьToolStripMenuItem1.Text = "Вычислить";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(597, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 439);
             this.ContextMenuStrip = this.contextMenuStrip1;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.precisionLabel);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.toolStrip1);
@@ -466,7 +451,6 @@ namespace NormalDensityTable21
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem вычислитьToolStripMenuItem1;
-        private System.Windows.Forms.Button button1;
     }
 }
 
