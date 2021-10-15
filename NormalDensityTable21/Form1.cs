@@ -63,7 +63,7 @@ namespace NormalDensityTable21
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
 
-           
+
 
             BuildPlot();
         }
@@ -154,34 +154,67 @@ namespace NormalDensityTable21
             OpenFileDialog open = new OpenFileDialog();
 
             List<string> l = new List<string>();
+
+            List<string> odd = new List<string>();
+            List<string> even = new List<string>();
+
+
             string output = "";
 
             if (open.ShowDialog() == DialogResult.OK)
             {
                 output = File.ReadAllText(open.FileName);
             }
-            // bool isDouble = false; 
-            // for (int i = 0; i < output.Length; i++)
-            // {
-            //     for (int j = 0; j < 3; j++)
-            //     {
-            //         isDouble = double.TryParse(output[j].ToString(), out _);
-            //
-            //         if (isDouble)
-            //         {
-            //             l[i] += output[j];
-            //         }
-            //         else
-            //         {
-            //             break;
-            //         }
-            //     }
-            // }
+
+            l.AddRange(output.Split(';', ' ', '\n'));
+
+            for (int i = 0; i < l.Count; i++)
+            {
+                l.Remove("");
+
+            }
+           
 
 
 
+            for (int i = 0; i < l.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    even.Add(l[i]);
+                }
+                else
+                {
+                    odd.Add(l[i]);
+                }
+            }
+          
 
+            for (int i = 0; i < even.Count; i++)
+            {
+                dataGridView.Rows.Add();
+
+
+                dataGridView.Rows[i].Cells[0].Value = even[i];
+
+
+
+            }
+            for (int i = 0; i < odd.Count; i++)
+            {
+
+                dataGridView.Rows[i].Cells[1].Value = odd[i];
+
+
+            }
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                PaintDots(i);
+            }
         }
+
+
+
 
         private void вычислятьНемедленноToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -232,7 +265,7 @@ namespace NormalDensityTable21
                 {
                     Plot(i);
                 }
-               // Plot(e.RowIndex);
+                // Plot(e.RowIndex);
 
             }
         }
@@ -252,7 +285,8 @@ namespace NormalDensityTable21
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
-                PaintDotsAgain(i);
+
+                PaintDots(i);
             }
         }
 
@@ -262,7 +296,7 @@ namespace NormalDensityTable21
         {
             Calculatefunc(rowIndex);
 
-            PaintDotsAgain(rowIndex);
+            PaintDots(rowIndex);
 
         }
 
@@ -309,20 +343,27 @@ namespace NormalDensityTable21
             }
         }
 
-        private void PaintDotsAgain(int rowIndex)//рисует точки на графике
+        private void PaintDots(int rowIndex)//рисует точки на графике
         {
+            double x = 0;
             {//костыль, но бага то нет
                 chart1.Series[2].Points.Add(new DataPoint(0, 200));
                 chart1.Series[2].Points.Add(new DataPoint(200, 0));
             }
-
-            double x = Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value);
+            bool isDouble = false;
+            if (dataGridView.Rows[rowIndex].Cells[0].Value != null)
+                isDouble = double.TryParse(dataGridView.Rows[rowIndex].Cells[0].Value.ToString(), out _);
+            if (isDouble)
+            {
+                x = Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value);
+            }
+            else return;
 
             bool isEmpty = false;
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
-                if(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value) == 0 && Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[1].Value) == 0)
+                if (Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value) == 0 && Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[1].Value) == 0)
                 {
                     isEmpty = true;
                 }
@@ -331,7 +372,7 @@ namespace NormalDensityTable21
             if (x == 0)
             {
                 chart1.Series[1].Points.Add(new DataPoint(200, 200));
-                
+
             }
 
             if (isEmpty)
@@ -345,8 +386,6 @@ namespace NormalDensityTable21
 
                 chart1.Series[2].Points.Add(new DataPoint(0, f(x)));
                 chart1.Series[2].Points.Add(new DataPoint(x, 0));
-                
-                
             }
 
         }
