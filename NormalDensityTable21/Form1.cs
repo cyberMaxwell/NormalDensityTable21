@@ -227,8 +227,14 @@ namespace NormalDensityTable21
         {
             //BuildPlot();
             if (CalculateImmediately.Checked)
-                Plot(e.RowIndex);
+            {
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    Plot(i);
+                }
+               // Plot(e.RowIndex);
 
+            }
         }
 
 
@@ -274,7 +280,11 @@ namespace NormalDensityTable21
             }
 
             if (!isDouble)
+            {
                 dataGridView.Rows[rowIndex].Cells[0].Value = null;
+                dataGridView.Rows[rowIndex].Cells[1].Value = null;
+
+            }
             else
             {
                 if (Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value) > 391)
@@ -309,8 +319,6 @@ namespace NormalDensityTable21
             double x = Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value);
 
             bool isEmpty = false;
-            bool isFirstZero = false;
-
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
