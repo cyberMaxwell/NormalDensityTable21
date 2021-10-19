@@ -211,6 +211,8 @@ namespace NormalDensityTable21
             {
                 Calculatefunc(i);
                 PaintDots(i);
+                dataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
+
             }
         }
 
