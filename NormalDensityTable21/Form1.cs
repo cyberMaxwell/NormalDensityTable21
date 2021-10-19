@@ -209,6 +209,7 @@ namespace NormalDensityTable21
             }
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
+                Calculatefunc(i);
                 PaintDots(i);
             }
         }
@@ -350,6 +351,7 @@ namespace NormalDensityTable21
                 chart1.Series[2].Points.Add(new DataPoint(0, 200));
                 chart1.Series[2].Points.Add(new DataPoint(200, 0));
             }
+
             bool isDouble = false;
             if (dataGridView.Rows[rowIndex].Cells[0].Value != null)
                 isDouble = double.TryParse(dataGridView.Rows[rowIndex].Cells[0].Value.ToString(), out _);
