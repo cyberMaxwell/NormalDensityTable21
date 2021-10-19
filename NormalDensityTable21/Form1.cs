@@ -173,7 +173,7 @@ namespace NormalDensityTable21
                 l.Remove("");
 
             }
-           
+
 
 
 
@@ -188,7 +188,7 @@ namespace NormalDensityTable21
                     odd.Add(l[i]);
                 }
             }
-          
+
 
             for (int i = 0; i < even.Count; i++)
             {
@@ -397,6 +397,33 @@ namespace NormalDensityTable21
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void CopyTheChart(object sender, EventArgs e)//копирование графика в меню
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                chart1.SaveImage(ms, ChartImageFormat.Bmp);
+                Bitmap bm = new Bitmap(ms);
+                Clipboard.SetImage(bm);
+
+            }
+        }
+
+        private void SaveTheChart(object sender, EventArgs e)//сохранение графика в меню
+        {
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.RestoreDirectory = true;
+            save.DefaultExt = "png";
+            save.Filter = "Png files (*.png)|*.png|All files (*.*)|*.*";
+            save.FilterIndex = 1;
+
+
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                chart1.SaveImage(save.FileName, ChartImageFormat.Png);
+            }
         }
     }
 }
