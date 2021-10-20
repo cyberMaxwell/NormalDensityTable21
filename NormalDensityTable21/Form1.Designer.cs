@@ -31,11 +31,11 @@ namespace NormalDensityTable21
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine3 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine4 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,6 +160,7 @@ namespace NormalDensityTable21
             this.вычислитьToolStripMenuItem.Name = "вычислитьToolStripMenuItem";
             this.вычислитьToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.вычислитьToolStripMenuItem.Text = "Вычислить";
+            this.вычислитьToolStripMenuItem.Click += new System.EventHandler(this.вычислитьToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -239,30 +240,30 @@ namespace NormalDensityTable21
             // 
             // chart1
             // 
-            chartArea3.AxisX.LabelAutoFitMaxFontSize = 7;
-            chartArea3.AxisX.LabelAutoFitMinFontSize = 7;
-            chartArea3.AxisY.LabelAutoFitMaxFontSize = 7;
-            chartArea3.AxisY.LabelAutoFitMinFontSize = 7;
-            chartArea3.AxisY.StripLines.Add(stripLine3);
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea4.AxisX.LabelAutoFitMaxFontSize = 7;
+            chartArea4.AxisX.LabelAutoFitMinFontSize = 7;
+            chartArea4.AxisY.LabelAutoFitMaxFontSize = 7;
+            chartArea4.AxisY.LabelAutoFitMinFontSize = 7;
+            chartArea4.AxisY.StripLines.Add(stripLine4);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
             this.chart1.Location = new System.Drawing.Point(12, 55);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Name = "Series1";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series8.EmptyPointStyle.IsVisibleInLegend = false;
-            series8.MarkerSize = 10;
-            series8.Name = "Series2";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Name = "Series3";
-            this.chart1.Series.Add(series7);
-            this.chart1.Series.Add(series8);
-            this.chart1.Series.Add(series9);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Name = "Series1";
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series11.EmptyPointStyle.IsVisibleInLegend = false;
+            series11.MarkerSize = 10;
+            series11.Name = "Series2";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Name = "Series3";
+            this.chart1.Series.Add(series10);
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
             this.chart1.Size = new System.Drawing.Size(530, 372);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -368,27 +369,30 @@ namespace NormalDensityTable21
             // 
             this.открытьToolStripMenuItem1.Image = global::NormalDensityTable21.Properties.Resources.Open;
             this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
-            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem1.Text = "Открыть";
+            this.открытьToolStripMenuItem1.Click += new System.EventHandler(this.открытьToolStripMenuItem1_Click);
             // 
             // сохранитьToolStripMenuItem1
             // 
             this.сохранитьToolStripMenuItem1.Image = global::NormalDensityTable21.Properties.Resources.Save;
             this.сохранитьToolStripMenuItem1.Name = "сохранитьToolStripMenuItem1";
-            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem1.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem1.Click += new System.EventHandler(this.сохранитьToolStripMenuItem1_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(132, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // вычислитьToolStripMenuItem1
             // 
             this.вычислитьToolStripMenuItem1.Image = global::NormalDensityTable21.Properties.Resources.Func;
             this.вычислитьToolStripMenuItem1.Name = "вычислитьToolStripMenuItem1";
-            this.вычислитьToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.вычислитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.вычислитьToolStripMenuItem1.Text = "Вычислить";
+            this.вычислитьToolStripMenuItem1.Click += new System.EventHandler(this.вычислитьToolStripMenuItem1_Click);
             // 
             // Form1
             // 

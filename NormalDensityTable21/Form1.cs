@@ -79,7 +79,7 @@ namespace NormalDensityTable21
 
         private void CreateMenu(object sender, EventArgs e)//нажатие на "создать"
         {
-            dataGridView.Rows.Clear();
+            SaveDataMenu(sender, e);
         }
 
         private void SaveDataMenu(object sender, EventArgs e)//сохранить данные DataGridView
@@ -161,10 +161,16 @@ namespace NormalDensityTable21
 
             string output = "";
 
+
+           
+
+
             if (open.ShowDialog() == DialogResult.OK)
             {
                 output = File.ReadAllText(open.FileName);
             }
+
+            dataGridView.Rows.Clear();
 
             l.AddRange(output.Split(';', ' ', '\n'));
 
@@ -331,7 +337,7 @@ namespace NormalDensityTable21
                 }
 
 
-                dataGridView.Rows[rowIndex].Cells[1].Value = Math.Round(f(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value)),Convert.ToInt32(precisionUpDown.Value));
+                dataGridView.Rows[rowIndex].Cells[1].Value = Math.Round(f(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value)), Convert.ToInt32(precisionUpDown.Value));
 
             }
         }
@@ -401,13 +407,13 @@ namespace NormalDensityTable21
 
         private void CopyTheChart(object sender, EventArgs e)//копирование графика в меню
         {
-                MemoryStream ms = new MemoryStream();
-           
-                chart1.SaveImage(ms, ChartImageFormat.Png);
-                Bitmap bitmap = new Bitmap(ms);
-                Clipboard.SetImage(bitmap);
+            MemoryStream ms = new MemoryStream();
 
-           
+            chart1.SaveImage(ms, ChartImageFormat.Png);
+            Bitmap bitmap = new Bitmap(ms);
+            Clipboard.SetImage(bitmap);
+
+
         }
 
         private void SaveTheChart(object sender, EventArgs e)//сохранение графика в меню
@@ -429,12 +435,38 @@ namespace NormalDensityTable21
         private void NeededPrecision(object sender, EventArgs e)
         {
             int precision = Convert.ToInt32(precisionUpDown.Value);
-                        
+
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
                 double currentCell = f(Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value));
                 if (dataGridView.Rows[i].Cells[1].Value != null)
                     dataGridView.Rows[i].Cells[1].Value = Math.Round(currentCell, precision).ToString();
+            }
+        }
+
+        private void открытьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OnOpenDataClick(sender, e);
+        }
+
+        private void сохранитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveDataMenu(sender, e);
+        }
+
+        private void вычислитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                Plot(i);
+            }
+        }
+
+        private void вычислитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                Plot(i);
             }
         }
     }
