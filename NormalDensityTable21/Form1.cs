@@ -61,7 +61,7 @@ namespace NormalDensityTable21
             chart1.Series[2].Color = Color.Gray;
             chart1.Series[2].BorderWidth = 1;
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
-            chart1.Series[2].BorderDashStyle = ChartDashStyle.Dot;
+            chart1.Series[2].BorderDashStyle = ChartDashStyle.Dash;
 
 
 
@@ -331,7 +331,7 @@ namespace NormalDensityTable21
                 }
 
 
-                dataGridView.Rows[rowIndex].Cells[1].Value = f(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value));
+                dataGridView.Rows[rowIndex].Cells[1].Value = Math.Round(f(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value)),Convert.ToInt32(precisionUpDown.Value));
 
             }
         }
@@ -401,13 +401,13 @@ namespace NormalDensityTable21
 
         private void CopyTheChart(object sender, EventArgs e)//копирование графика в меню
         {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                chart1.SaveImage(ms, ChartImageFormat.Bmp);
-                Bitmap bm = new Bitmap(ms);
-                Clipboard.SetImage(bm);
+                MemoryStream ms = new MemoryStream();
+           
+                chart1.SaveImage(ms, ChartImageFormat.Png);
+                Bitmap bitmap = new Bitmap(ms);
+                Clipboard.SetImage(bitmap);
 
-            }
+           
         }
 
         private void SaveTheChart(object sender, EventArgs e)//сохранение графика в меню
@@ -423,6 +423,18 @@ namespace NormalDensityTable21
             if (save.ShowDialog() == DialogResult.OK)
             {
                 chart1.SaveImage(save.FileName, ChartImageFormat.Png);
+            }
+        }
+
+        private void NeededPrecision(object sender, EventArgs e)
+        {
+            int precision = Convert.ToInt32(precisionUpDown.Value);
+                        
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                double currentCell = f(Convert.ToDouble(dataGridView.Rows[i].Cells[0].Value));
+                if (dataGridView.Rows[i].Cells[1].Value != null)
+                    dataGridView.Rows[i].Cells[1].Value = Math.Round(currentCell, precision).ToString();
             }
         }
     }

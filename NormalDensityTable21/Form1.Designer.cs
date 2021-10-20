@@ -62,7 +62,7 @@ namespace NormalDensityTable21
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.CalculateFuncButton = new System.Windows.Forms.ToolStripButton();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.precisionUpDown = new System.Windows.Forms.NumericUpDown();
             this.precisionLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.открытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +73,7 @@ namespace NormalDensityTable21
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precisionUpDown)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,14 +187,14 @@ namespace NormalDensityTable21
             // ytToolStripMenuItem
             // 
             this.ytToolStripMenuItem.Name = "ytToolStripMenuItem";
-            this.ytToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ytToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.ytToolStripMenuItem.Text = "Копировать";
             this.ytToolStripMenuItem.Click += new System.EventHandler(this.CopyTheChart);
             // 
             // ytToolStripMenuItem1
             // 
             this.ytToolStripMenuItem1.Name = "ytToolStripMenuItem1";
-            this.ytToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ytToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.ytToolStripMenuItem1.Text = "Сохранить";
             this.ytToolStripMenuItem1.Click += new System.EventHandler(this.SaveTheChart);
             // 
@@ -322,27 +322,28 @@ namespace NormalDensityTable21
             this.CalculateFuncButton.Size = new System.Drawing.Size(23, 22);
             this.CalculateFuncButton.Click += new System.EventHandler(this.CalculateFuncButton_Click);
             // 
-            // numericUpDown1
+            // precisionUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(634, 52);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.precisionUpDown.Location = new System.Drawing.Point(634, 52);
+            this.precisionUpDown.Maximum = new decimal(new int[] {
             12,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.precisionUpDown.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.precisionUpDown.Name = "precisionUpDown";
+            this.precisionUpDown.Size = new System.Drawing.Size(120, 20);
+            this.precisionUpDown.TabIndex = 5;
+            this.precisionUpDown.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
+            this.precisionUpDown.ValueChanged += new System.EventHandler(this.NeededPrecision);
             // 
             // precisionLabel
             // 
@@ -396,7 +397,7 @@ namespace NormalDensityTable21
             this.ClientSize = new System.Drawing.Size(820, 439);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.precisionLabel);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.precisionUpDown);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.chart1);
@@ -414,7 +415,7 @@ namespace NormalDensityTable21
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.precisionUpDown)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -448,7 +449,7 @@ namespace NormalDensityTable21
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton CalculateFuncButton;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown precisionUpDown;
         private System.Windows.Forms.Label precisionLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem1;
