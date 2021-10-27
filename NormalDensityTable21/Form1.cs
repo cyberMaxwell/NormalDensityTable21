@@ -14,9 +14,10 @@ using System.Diagnostics;
 
 namespace NormalDensityTable21
 {
-
     public partial class Form1 : Form
     {
+        bool saved = false;
+        string savedFileName = "";
 
         public static double f(double x)
         {
@@ -79,73 +80,94 @@ namespace NormalDensityTable21
 
         private void CreateMenu(object sender, EventArgs e)//нажатие на "создать"
         {
-            SaveDataMenu(sender, e);
+            DialogResult result = MessageBox.Show("Хотите ли вы сохранить данные?", "Данные не сохранены!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+            if(result == DialogResult.Yes){
+                SaveAs(sender, e);
+                saved = false;
+                ActiveForm.Text = "Плотность стандартного нормального распределения";
+            }
+            
+                chart1.Series[1].Points.Clear();
+                chart1.Series[2].Points.Clear();
+
+                dataGridView.Rows.Clear();
+            
         }
 
         private void SaveDataMenu(object sender, EventArgs e)//сохранить данные DataGridView
         {
-            SaveFileDialog save = new SaveFileDialog();
+                SaveFileDialog save = new SaveFileDialog();
 
-            List<double> row = new List<double>();
+                List<double> row = new List<double>();
 
 
 
-            for (int i = 0; i < dataGridView.Rows.Count; i++)
-            {
-
-                for (int j = 0; j < 2; j++)
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
-                    row.Add(Convert.ToDouble(dataGridView.Rows[i].Cells[j].Value));
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        row.Add(Convert.ToDouble(dataGridView.Rows[i].Cells[j].Value));
+                    }
                 }
-            }
 
 
-            string saveStr = "";
+                string saveStr = "";
 
-            int newLine = 0;
+                int newLine = 0;
 
 
-            foreach (var a in row)
-            {
-                if (newLine == 1)
+                foreach (var a in row)
                 {
-                    saveStr += a.ToString() + "\n";
-                    newLine = 0;
+                    if (newLine == 1)
+                    {
+                        saveStr += a.ToString() + "\n";
+                        newLine = 0;
+                    }
+                    else
+                    {
+                        saveStr += a.ToString() + ";";
+                        newLine++;
+                    }
+                }
+
+                if (saveStr.Length > 5)
+                {
+                    saveStr = saveStr.Substring(0, saveStr.Length - 5);
+                    saveStr.Trim();
                 }
                 else
                 {
-                    saveStr += a.ToString() + ";";
-                    newLine++;
+                    saveStr = "";
                 }
-            }
 
-            if (saveStr.Length > 5)
+                for (int i = 0; i < saveStr.Length; i++)
+                {
+                    if (saveStr.Contains("0;0"))
+                    {
+                        int indexZero = saveStr.IndexOf("0;0");
+                        saveStr = saveStr.Remove(indexZero, 3);
+                    }
+                }
+
+            if (!saved)
             {
-                saveStr = saveStr.Substring(0, saveStr.Length - 5);
-                saveStr.Trim();
+                save.RestoreDirectory = true;
+                save.DefaultExt = "txt";
+                save.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                save.FilterIndex = 1;
+
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(save.FileName, saveStr);
+                }
+                savedFileName = save.FileName;
+                saved = true;
+                ActiveForm.Text = "Плотность стандартного нормального распределения - " + Path.GetFileName(savedFileName);
             }
             else
             {
-                saveStr = "";
-            }
-
-            for (int i = 0; i < saveStr.Length; i++)
-            {
-                if (saveStr.Contains("0;0"))
-                {
-                    int indexZero = saveStr.IndexOf("0;0");
-                    saveStr = saveStr.Remove(indexZero, 3);
-                }
-            }
-
-            save.RestoreDirectory = true;
-            save.DefaultExt = "txt";
-            save.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            save.FilterIndex = 1;
-
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName, saveStr);
+                File.WriteAllText(savedFileName, saveStr);
             }
         }
 
@@ -161,10 +183,6 @@ namespace NormalDensityTable21
 
             string output = "";
 
-
-           
-
-
             if (open.ShowDialog() == DialogResult.OK)
             {
                 output = File.ReadAllText(open.FileName);
@@ -179,9 +197,6 @@ namespace NormalDensityTable21
                 l.Remove("");
 
             }
-
-
-
 
             for (int i = 0; i < l.Count; i++)
             {
@@ -332,7 +347,9 @@ namespace NormalDensityTable21
             {
                 if (Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value) > 391)
                 {
+                    dataGridView.Rows[rowIndex].Cells[1].Value = null;
                     dataGridView.Rows[rowIndex].Cells[0].Value = null;
+
                     return;
                 }
 
@@ -468,6 +485,12 @@ namespace NormalDensityTable21
             {
                 Plot(i);
             }
+        }
+
+        private void SaveAs(object sender, EventArgs e)
+        {
+            saved = false;
+            SaveDataMenu(sender, e);
         }
     }
 }
