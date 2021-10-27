@@ -44,10 +44,10 @@ namespace NormalDensityTable21
             chart1.ChartAreas[0].AxisY.Crossing = 0;
             chart1.ChartAreas[0].AxisX.MajorTickMark.TickMarkStyle = TickMarkStyle.AcrossAxis;
             chart1.ChartAreas[0].AxisY.MajorTickMark.TickMarkStyle = TickMarkStyle.AcrossAxis;
-
+            
             chart1.ChartAreas[0].AxisX.Interval = 1;
             chart1.ChartAreas[0].AxisY.Interval = 2;
-
+            
             chart1.ChartAreas[0].AxisX.Minimum = -2;
             chart1.ChartAreas[0].AxisX.Maximum = 4;
             chart1.ChartAreas[0].AxisY.Minimum = -10;
@@ -61,6 +61,32 @@ namespace NormalDensityTable21
             chart1.Series[2].BorderWidth = 1;
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dash;
+
+            string[] pointsX = { "-2", "-1", "    0", "1", "2", "3", "4" };
+            int startOffsetX = -8;
+            int endOffsetX = 4;
+            foreach (string point in pointsX)
+            {
+                CustomLabel pointsLabel = new CustomLabel(startOffsetX, endOffsetX, point, 0, LabelMarkStyle.None);
+                
+
+                chart1.ChartAreas[0].AxisX.CustomLabels.Add(pointsLabel);
+                startOffsetX = startOffsetX + 1;
+                endOffsetX = endOffsetX + 1;
+            }
+
+            string[] pointsY = { "-10", "-8", "-6", "-4", "-2", "", "2", "4", "6", "8", "10" };
+            int startOffsetY = -30;
+            int endOffsetY = 10;
+            foreach (string point in pointsY)
+            {
+                CustomLabel pointsLabel = new CustomLabel(startOffsetY, endOffsetY, point, 0, LabelMarkStyle.None);
+
+
+                chart1.ChartAreas[0].AxisY.CustomLabels.Add(pointsLabel);
+                startOffsetY = startOffsetY + 2;
+                endOffsetY = endOffsetY + 2;
+            }
 
             toolTip1 = new ToolTip();
 
