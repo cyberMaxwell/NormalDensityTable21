@@ -16,6 +16,7 @@ namespace NormalDensityTable21
 {
     public partial class Form1 : Form
     {
+        ToolTip toolTip1;
         bool saved = false;
         string savedFileName = "";
 
@@ -33,9 +34,6 @@ namespace NormalDensityTable21
 
         private void FormLoad(object sender, EventArgs e)
         {
-            //chart1.Series[1].Points.Clear();
-
-
             dataGridView.Columns[1].ReadOnly = true;
 
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
@@ -64,16 +62,45 @@ namespace NormalDensityTable21
             chart1.Series[2].ChartType = SeriesChartType.StepLine;
             chart1.Series[2].BorderDashStyle = ChartDashStyle.Dash;
 
+            toolTip1 = new ToolTip();
 
+            ShowTooltips();
 
             BuildPlot();
         }
+        private void ShowTooltips()
+        {
 
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+
+            if (!isToolTips.Checked)
+            {
+                calculateFuncButton.ToolTipText = "";
+                toolStripButtonCreate.ToolTipText = "";
+                toolStripButtonOpen.ToolTipText = "";
+                toolStripButtonSave.ToolTipText = "";
+                toolTip1.Active = false;
+            }
+            else
+            {
+                calculateFuncButton.ToolTipText = "Вычислить";
+                toolStripButtonCreate.ToolTipText = "Создать";
+                toolStripButtonOpen.ToolTipText = "Открыть";
+                toolStripButtonSave.ToolTipText = "Сохранить";
+                toolTip1.Active = true;
+            }
+
+            toolTip1.SetToolTip(chart1, "График плотности");
+            toolTip1.SetToolTip(calculateButton, "Вычислить значения плотности");
+
+            toolTip1.SetToolTip(precisionUpDown, "Количество знаков после запятой");
+        }
 
         private void RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
-
         }
 
 
@@ -86,11 +113,13 @@ namespace NormalDensityTable21
                 saved = false;
                 ActiveForm.Text = "Плотность стандартного нормального распределения";
             }
-            
+            if (result != DialogResult.Cancel)
+            {
                 chart1.Series[1].Points.Clear();
                 chart1.Series[2].Points.Clear();
 
                 dataGridView.Rows.Clear();
+            }
             
         }
 
@@ -256,7 +285,8 @@ namespace NormalDensityTable21
         }
         private void всплывающиеПодсказкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            всплывающиеПодсказкиToolStripMenuItem.Checked = !всплывающиеПодсказкиToolStripMenuItem.Checked;
+            isToolTips.Checked = !isToolTips.Checked;
+            ShowTooltips();
         }
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -491,6 +521,34 @@ namespace NormalDensityTable21
         {
             saved = false;
             SaveDataMenu(sender, e);
+        }
+
+        private void calculateButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                Plot(i);
+            }
+        }
+
+        private void MenuStripCreate(object sender, EventArgs e)
+        {
+            CreateMenu(sender, e);
+        }
+
+        private void MenuStripOpen(object sender, EventArgs e)
+        {
+            OnOpenDataClick(sender, e);
+        }
+
+        private void MenuStripSave(object sender, EventArgs e)
+        {
+            SaveDataMenu(sender, e);
+        }
+
+        private void OnExitClick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

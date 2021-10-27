@@ -31,11 +31,11 @@ namespace NormalDensityTable21
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine1 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine5 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,16 +52,16 @@ namespace NormalDensityTable21
             this.ytToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ytToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.всплывающиеПодсказкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.isToolTips = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCreate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.CalculateFuncButton = new System.Windows.Forms.ToolStripButton();
+            this.calculateFuncButton = new System.Windows.Forms.ToolStripButton();
             this.precisionUpDown = new System.Windows.Forms.NumericUpDown();
             this.precisionLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -69,6 +69,7 @@ namespace NormalDensityTable21
             this.сохранитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.вычислитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculateButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -144,6 +145,7 @@ namespace NormalDensityTable21
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.OnExitClick);
             // 
             // toolStripMenuItem2
             // 
@@ -189,34 +191,34 @@ namespace NormalDensityTable21
             // ytToolStripMenuItem
             // 
             this.ytToolStripMenuItem.Name = "ytToolStripMenuItem";
-            this.ytToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.ytToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ytToolStripMenuItem.Text = "Копировать";
             this.ytToolStripMenuItem.Click += new System.EventHandler(this.CopyTheChart);
             // 
             // ytToolStripMenuItem1
             // 
             this.ytToolStripMenuItem1.Name = "ytToolStripMenuItem1";
-            this.ytToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.ytToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.ytToolStripMenuItem1.Text = "Сохранить";
             this.ytToolStripMenuItem1.Click += new System.EventHandler(this.SaveTheChart);
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.всплывающиеПодсказкиToolStripMenuItem,
+            this.isToolTips,
             this.оПрограммеToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
-            // всплывающиеПодсказкиToolStripMenuItem
+            // isToolTips
             // 
-            this.всплывающиеПодсказкиToolStripMenuItem.Checked = true;
-            this.всплывающиеПодсказкиToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.всплывающиеПодсказкиToolStripMenuItem.Name = "всплывающиеПодсказкиToolStripMenuItem";
-            this.всплывающиеПодсказкиToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.всплывающиеПодсказкиToolStripMenuItem.Text = "Всплывающие подсказки";
-            this.всплывающиеПодсказкиToolStripMenuItem.Click += new System.EventHandler(this.всплывающиеПодсказкиToolStripMenuItem_Click);
+            this.isToolTips.Checked = true;
+            this.isToolTips.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isToolTips.Name = "isToolTips";
+            this.isToolTips.Size = new System.Drawing.Size(215, 22);
+            this.isToolTips.Text = "Всплывающие подсказки";
+            this.isToolTips.Click += new System.EventHandler(this.всплывающиеПодсказкиToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -241,30 +243,30 @@ namespace NormalDensityTable21
             // 
             // chart1
             // 
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 7;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 7;
-            chartArea1.AxisY.LabelAutoFitMaxFontSize = 7;
-            chartArea1.AxisY.LabelAutoFitMinFontSize = 7;
-            chartArea1.AxisY.StripLines.Add(stripLine1);
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea5.AxisX.LabelAutoFitMaxFontSize = 7;
+            chartArea5.AxisX.LabelAutoFitMinFontSize = 7;
+            chartArea5.AxisY.LabelAutoFitMaxFontSize = 7;
+            chartArea5.AxisY.LabelAutoFitMinFontSize = 7;
+            chartArea5.AxisY.StripLines.Add(stripLine5);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
             this.chart1.Location = new System.Drawing.Point(12, 55);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.EmptyPointStyle.IsVisibleInLegend = false;
-            series2.MarkerSize = 10;
-            series2.Name = "Series2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "Series3";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series13.Name = "Series1";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series14.EmptyPointStyle.IsVisibleInLegend = false;
+            series14.MarkerSize = 10;
+            series14.Name = "Series2";
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series15.Name = "Series3";
+            this.chart1.Series.Add(series13);
+            this.chart1.Series.Add(series14);
+            this.chart1.Series.Add(series15);
             this.chart1.Size = new System.Drawing.Size(530, 372);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -272,61 +274,61 @@ namespace NormalDensityTable21
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
+            this.toolStripButtonCreate,
+            this.toolStripButtonOpen,
+            this.toolStripButtonSave,
             this.toolStripSeparator1,
-            this.CalculateFuncButton});
+            this.calculateFuncButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(820, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // toolStripButtonCreate
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButtonCreate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCreate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCreate.Image")));
+            this.toolStripButtonCreate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCreate.Name = "toolStripButtonCreate";
+            this.toolStripButtonCreate.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonCreate.Click += new System.EventHandler(this.MenuStripCreate);
             // 
-            // toolStripButton2
+            // toolStripButtonOpen
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButtonOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOpen.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpen.Image")));
+            this.toolStripButtonOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOpen.Name = "toolStripButtonOpen";
+            this.toolStripButtonOpen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonOpen.Click += new System.EventHandler(this.MenuStripOpen);
             // 
-            // toolStripButton3
+            // toolStripButtonSave
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSave.Image")));
+            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSave.Name = "toolStripButtonSave";
+            this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSave.Click += new System.EventHandler(this.MenuStripSave);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // CalculateFuncButton
+            // calculateFuncButton
             // 
-            this.CalculateFuncButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CalculateFuncButton.Image = ((System.Drawing.Image)(resources.GetObject("CalculateFuncButton.Image")));
-            this.CalculateFuncButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CalculateFuncButton.Name = "CalculateFuncButton";
-            this.CalculateFuncButton.Size = new System.Drawing.Size(23, 22);
-            this.CalculateFuncButton.Click += new System.EventHandler(this.CalculateFuncButton_Click);
+            this.calculateFuncButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.calculateFuncButton.Image = ((System.Drawing.Image)(resources.GetObject("calculateFuncButton.Image")));
+            this.calculateFuncButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.calculateFuncButton.Name = "calculateFuncButton";
+            this.calculateFuncButton.Size = new System.Drawing.Size(23, 22);
+            this.calculateFuncButton.Click += new System.EventHandler(this.CalculateFuncButton_Click);
             // 
             // precisionUpDown
             // 
-            this.precisionUpDown.Location = new System.Drawing.Point(634, 52);
+            this.precisionUpDown.Location = new System.Drawing.Point(611, 52);
             this.precisionUpDown.Maximum = new decimal(new int[] {
             12,
             0,
@@ -338,7 +340,7 @@ namespace NormalDensityTable21
             0,
             0});
             this.precisionUpDown.Name = "precisionUpDown";
-            this.precisionUpDown.Size = new System.Drawing.Size(120, 20);
+            this.precisionUpDown.Size = new System.Drawing.Size(55, 20);
             this.precisionUpDown.TabIndex = 5;
             this.precisionUpDown.Value = new decimal(new int[] {
             2,
@@ -350,7 +352,7 @@ namespace NormalDensityTable21
             // precisionLabel
             // 
             this.precisionLabel.AutoSize = true;
-            this.precisionLabel.Location = new System.Drawing.Point(571, 55);
+            this.precisionLabel.Location = new System.Drawing.Point(548, 55);
             this.precisionLabel.Name = "precisionLabel";
             this.precisionLabel.Size = new System.Drawing.Size(57, 13);
             this.precisionLabel.TabIndex = 6;
@@ -395,12 +397,24 @@ namespace NormalDensityTable21
             this.вычислитьToolStripMenuItem1.Text = "Вычислить";
             this.вычислитьToolStripMenuItem1.Click += new System.EventHandler(this.вычислитьToolStripMenuItem1_Click);
             // 
+            // calculateButton
+            // 
+            this.calculateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calculateButton.Location = new System.Drawing.Point(733, 49);
+            this.calculateButton.Name = "calculateButton";
+            this.calculateButton.Size = new System.Drawing.Size(75, 23);
+            this.calculateButton.TabIndex = 7;
+            this.calculateButton.Text = "Вычислить";
+            this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 439);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.precisionLabel);
             this.Controls.Add(this.precisionUpDown);
             this.Controls.Add(this.toolStrip1);
@@ -442,18 +456,18 @@ namespace NormalDensityTable21
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вычислитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CalculateImmediately;
-        private System.Windows.Forms.ToolStripMenuItem всплывающиеПодсказкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem isToolTips;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCreate;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOpen;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton CalculateFuncButton;
+        private System.Windows.Forms.ToolStripButton calculateFuncButton;
         private System.Windows.Forms.NumericUpDown precisionUpDown;
         private System.Windows.Forms.Label precisionLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -461,6 +475,7 @@ namespace NormalDensityTable21
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem вычислитьToolStripMenuItem1;
+        private System.Windows.Forms.Button calculateButton;
     }
 }
 
