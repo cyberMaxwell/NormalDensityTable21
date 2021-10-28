@@ -205,7 +205,7 @@ namespace NormalDensityTable21
                     }
                 }
 
-            if (!saved)
+            if (!saved || savedFileName == "")
             {
                 save.RestoreDirectory = true;
                 save.DefaultExt = "txt";
@@ -218,7 +218,7 @@ namespace NormalDensityTable21
                 }
                 savedFileName = save.FileName;
                 saved = true;
-                ActiveForm.Text = "Плотность стандартного нормального распределения - " + Path.GetFileName(savedFileName);
+                ActiveForm.Text = "Плотность стандартного нормального распределения " + Path.GetFileName(savedFileName);
             }
             else
             {
@@ -291,9 +291,6 @@ namespace NormalDensityTable21
 
             }
         }
-
-
-
 
         private void вычислятьНемедленноToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -408,6 +405,7 @@ namespace NormalDensityTable21
 
                     return;
                 }
+                
 
 
                 dataGridView.Rows[rowIndex].Cells[1].Value = Math.Round(f(Convert.ToDouble(dataGridView.Rows[rowIndex].Cells[0].Value)), Convert.ToInt32(precisionUpDown.Value));
