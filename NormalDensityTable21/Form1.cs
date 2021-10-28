@@ -402,8 +402,20 @@ namespace NormalDensityTable21
                 {
                     dataGridView.Rows[rowIndex].Cells[1].Value = null;
                     dataGridView.Rows[rowIndex].Cells[0].Value = null;
-
                     return;
+                }
+                if(dataGridView.Rows[rowIndex].Cells[0].Value.ToString().StartsWith("0") && dataGridView.Rows[rowIndex].Cells[0].Value.ToString().Length > 1)
+                {
+                    string a = dataGridView.Rows[rowIndex].Cells[0].Value.ToString().TrimStart('0');
+                    if (a != "")
+                    {
+                        dataGridView.Rows[rowIndex].Cells[0].Value = a;
+                    }
+                    else
+                    {
+                        dataGridView.Rows[rowIndex].Cells[0].Value = 0;
+                    }
+                    
                 }
                 
 
